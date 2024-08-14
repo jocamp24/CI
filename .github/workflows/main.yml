@@ -23,10 +23,10 @@ jobs:
       - name: download code
         uses: actions/checkout@v4
         with:
-          - name: code
-            path: .
-          - name: Run Linting
-            uses: super-linter/super-linter/slim@v5 
-            env:
-              DEFAULT_BRANCH: main
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: code
+          path: .
+      - name: run Linting
+        uses: super-linter/super-linter/slim@v5 
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
