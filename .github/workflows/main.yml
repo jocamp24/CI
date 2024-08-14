@@ -54,7 +54,7 @@ jobs:
     - name: push docker
       run: bash ci/push-docker.sh
   Component-test:
-     runs-on: ubuntu:latest
+     runs-on: ubuntu-latest
      needs: Docker-image
      steps:
        - name: Download code
@@ -65,7 +65,7 @@ jobs:
        - name: Execute component test
          run: bash ci/component-test.sh
   Preformance-Test:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     needs: Docker-image
     steps:
       - name: Download code
