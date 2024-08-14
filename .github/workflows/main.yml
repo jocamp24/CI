@@ -73,5 +73,5 @@ jobs:
         with:
           name: code
           path: .
-      - name: Execute component test
+      - name: Execute performance test
         run: bash ci/performance-test.sh
