@@ -1,6 +1,6 @@
 name: Main workflow
 on: push
-jobs:
+jobs:              
   Build:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
@@ -16,18 +16,17 @@ jobs:
         with: 
           name: code
           path: .
-      - name: Linting
-          runs-on: ubuntu-latest
-          needs: [build]
-          steps:
-            - name: download code
-              uses: actions/checkout@v4
-              wiht:
-                name: code
-                path: .
-            - name: Run Linting
-              uses: super-linter/super-linter/slim@v5 
-              env:
-                DEFAULT_BRANCH: main
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              
+  Linting:
+    runs-on: ubuntu-latest
+    needs: [Build]
+    steps:
+      - name: download code
+        uses: actions/checkout@v4
+        with:
+          - name: code
+            path: .
+          - name: Run Linting
+            uses: super-linter/super-linter/slim@v5 
+            env:
+              DEFAULT_BRANCH: main
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
